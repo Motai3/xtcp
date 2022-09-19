@@ -41,6 +41,16 @@ func NewPoolConn(addr string, timeout ...time.Duration) (*PoolConn, error) {
 	}
 }
 
+func (c *PoolConn) Close() error {
+	if c.pool != nil && c.status == connStatusActive {
+		c.status = connStatusUnknown
+		c.pool.Put(c)
+	} else {
+		return c.Conn.Close()
+	}
+	return nil
+}
+
 func (c *PoolConn) Send(data []byte, retry ...Retry) error {
 	err := c.Conn.Send(data, retry...)
 	if err != nil && (c.status == connStatusUnknown || c.status == connStatusError) {
