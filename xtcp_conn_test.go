@@ -2,7 +2,6 @@ package xtcp_test
 
 import (
 	"fmt"
-	"github.com/gogf/gf/net/gtcp"
 	"github.com/stretchr/testify/assert"
 	"strconv"
 	"testing"
@@ -17,6 +16,7 @@ func init() {
 	for i := 9000; i < 10000; i++ {
 		portList.PushBack(i)
 	}
+
 }
 
 func Test_Package_Basic(t *testing.T) {
@@ -87,7 +87,7 @@ func Test_Package_Timeout(t *testing.T) {
 	time.Sleep(100 * time.Millisecond)
 
 	t.Run("SendRecvTimeout", func(t *testing.T) {
-		conn, err := gtcp.NewConn(fmt.Sprintf("127.0.0.1:%d", p))
+		conn, err := xtcp.NewConn(fmt.Sprintf("127.0.0.1:%d", p))
 		assert.NoError(t, err)
 		defer conn.Close()
 		data := []byte("10000")
@@ -97,7 +97,7 @@ func Test_Package_Timeout(t *testing.T) {
 	})
 
 	t.Run("SendRecvNotTimeout", func(t *testing.T) {
-		conn, err := gtcp.NewConn(fmt.Sprintf("127.0.0.1:%d", p))
+		conn, err := xtcp.NewConn(fmt.Sprintf("127.0.0.1:%d", p))
 		assert.NoError(t, err)
 		defer conn.Close()
 		data := []byte("10000")
