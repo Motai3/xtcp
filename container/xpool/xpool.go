@@ -29,7 +29,6 @@ type ExpireFunc func(interface{})
 func New(ttl time.Duration, newFunc NewFunc, expireFunc ...ExpireFunc) *Pool {
 	r := &Pool{
 		list:    xlist.New(),
-		closed:  int32(0),
 		TTL:     ttl,
 		NewFunc: newFunc,
 	}
@@ -94,7 +93,7 @@ func (p *Pool) Size() int {
 }
 
 func (p *Pool) Close() {
-	p.closed = atomic.SwapInt32(&p.closed, 1)
+	atomic.SwapInt32(&p.closed, 1)
 }
 
 func (p *Pool) checkExpireItems() {

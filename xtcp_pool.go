@@ -25,7 +25,7 @@ var addressPoolMap sync.Map
 
 func NewPoolConn(addr string, timeout ...time.Duration) (*PoolConn, error) {
 	var pool *xpool.Pool
-	xpool.New(defaultPoolExpire, func() (interface{}, error) {
+	pool = xpool.New(defaultPoolExpire, func() (interface{}, error) {
 		if conn, err := NewConn(addr, timeout...); err == nil {
 			return &PoolConn{conn, pool, connStatusActive}, nil
 		} else {
