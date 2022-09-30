@@ -1,4 +1,4 @@
-module xtcp
+module github.com/motai3/xtcp
 
 go 1.16
 

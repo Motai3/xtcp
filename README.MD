@@ -6,7 +6,7 @@ xtcp 是 Golang 的一个 tcp 开发组件，重新封装了 tcp 连接对象，
 
 #### 服务端
 
-```go
+```
 package main
 
 import (
