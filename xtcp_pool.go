@@ -1,9 +1,9 @@
 package xtcp
 
 import (
+	"github.com/motai3/xtcp/container/xpool"
 	"sync"
 	"time"
-	"xtcp/container/xpool"
 )
 
 // PoolConn 是一个具有池特性的连接

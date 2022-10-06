@@ -2,11 +2,11 @@ package xtcp_test
 
 import (
 	"fmt"
+	"github.com/motai3/xtcp"
 	"github.com/stretchr/testify/assert"
 	"strconv"
 	"testing"
 	"time"
-	"xtcp"
 )
 
 func Test_Pool_Package_Basic(t *testing.T) {

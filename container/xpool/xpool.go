@@ -2,9 +2,9 @@ package xpool
 
 import (
 	"errors"
+	"github.com/motai3/xtcp/container/xlist"
 	"sync/atomic"
 	"time"
-	"xtcp/container/xlist"
 
 	"github.com/gogf/gf/os/gtimer"
 )

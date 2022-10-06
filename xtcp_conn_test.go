@@ -2,12 +2,12 @@ package xtcp_test
 
 import (
 	"fmt"
+	"github.com/motai3/xtcp"
+	"github.com/motai3/xtcp/container/xlist"
 	"github.com/stretchr/testify/assert"
 	"strconv"
 	"testing"
 	"time"
-	"xtcp"
-	"xtcp/container/xlist"
 )
 
 var portList = xlist.New()
