@@ -6,7 +6,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/gogf/gf/os/gtimer"
+	"github.com/motai3/xcron"
 )
 
 type Pool struct {
@@ -35,7 +35,9 @@ func New(ttl time.Duration, newFunc NewFunc, expireFunc ...ExpireFunc) *Pool {
 	if len(expireFunc) > 0 {
 		r.ExpireFunc = expireFunc[0]
 	}
-	gtimer.AddSingleton(time.Second, r.checkExpireItems)
+	cron := xcron.New()
+	cron.AddFunc("0/1 * * * * *", r.checkExpireItems)
+	go cron.Run()
 	return r
 }
 
@@ -107,7 +109,7 @@ func (p *Pool) checkExpireItems() {
 				}
 			}
 		}
-		gtimer.Exit()
+		xcron.FuncExit()
 	}
 
 	if p.TTL == 0 {

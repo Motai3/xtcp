@@ -54,7 +54,7 @@ func Test_Pool_Package_Basic(t *testing.T) {
 }
 
 func Test_Pool_Basic1(t *testing.T) {
-	p := portList.PopFront()
+	p := 10007
 	s := xtcp.NewServer(fmt.Sprintf(`:%d`, p), func(conn *xtcp.Conn) {
 		defer conn.Close()
 		for {
